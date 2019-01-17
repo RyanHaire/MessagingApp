@@ -11,15 +11,50 @@
 {% endblock %}
 
 <script type='text/javascript'>
+
+    // document nodes used in script
+    const messageInput = document.querySelector('#message-input');
+    const messageSubmit = document.querySelector('#message-submit');
+    const roomNameNode = document.querySelector('#room-name');
+
     var roomName = {{ room_name_json }};
 
-    changeNodeText("room-name", roomName);
+    changeNodeText(roomNameNode, roomName);
 
-    function changeNodeText(nodeId, text) {
-        document.getElementById(nodeId).innerText = text.trim();
+    // helper function
+    function changeNodeText(node, text) {
+        node.innerText = text.trim();
     } 
 
+    // websocket
+    var chatSocket = new WebSocket(
+        'ws://' + window.location.host + 
+        '/ws/chat/' + roomName + '/'
+    );
+
     // websocket listeners
+    chatSocket.onmessage = function(e) {
+        var date = JSON.parse(e.data)
+    };
+
+    chatSocket.onclose = function(e) {
+
+    };
 
     // events listeners for message-input and message-submit
+    messageInput.focus();
+    messageInput.onkeyup = function(e) {
+        // check if enter key is enter/return
+        if (e.keycode === 13) {
+            messageSubmit.click();
+        }
+    }
+    messageSubmit.onclick = function(e) {
+        var message = messageSubmit.value;
+        chatSocket.send(JSON.stringify({
+            'message': message
+        }));
+
+        messageInputDom.value = '';
+    }
 </script>
