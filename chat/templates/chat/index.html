@@ -1,15 +1,32 @@
 
 {% extends 'base.html' %}
 
-{% block title %}Lobby{% endblock %}
+{% block title %}Chat List{% endblock %}
 
 {% block content %}
     <h1>Welcome to the chat room list, {{user.username}}.</h1>
     <h2>Pick a room to join:</h2>
-    {% comment %} {% for room in room_list %}
-        <li>
-            <a href="{% url room.name %}">{{ room.name }}</a>
-            <span> | Users: {{ room.users.count }} </span>
-        </li>
-    {% endfor %} {% endcomment %}
+    {% comment %} 
+    {% for room in room_list %}
+    <div>
+        <span>{{room.name}}</span>
+        <span> | Users: {{ room.users.count }} </span>
+        <a href="{% url room.name %}">Enter</a>
+    </div>
+    {% endfor %} 
+    {% endcomment %}
+
+   <h2>Or make a new room:</h2>
+    {% comment %} <form method="post">
+        {% csrf_token %}
+        <input type="text" name="room-name" placeholder="Enter room name.."><br/>
+        <input type="submit" value="Create Room">
+    </form> {% endcomment %}
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+
+
+</script>
 {% endblock %}
