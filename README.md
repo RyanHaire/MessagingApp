@@ -1,5 +1,5 @@
 # Messaging App #
-### Frameworks Used ###
+### Frameworks ###
 * channels
 * channels_redis
 * django
@@ -8,6 +8,8 @@
 * Python (Serverside)
 * Javascript (Clientside)
 
+### External Tools ###
+* Redis 
 
 # Next steps
 - [ ] Keep track of rooms so 'index.html' in chat app can display list of rooms for users to enter
