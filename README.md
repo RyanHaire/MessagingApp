@@ -18,3 +18,4 @@
 - [ ] Ability to allow users to create rooms
 - [ ] Creator of room will be room admin
 - [ ] Add admin privileges for room admins
+- [ ] Setup 404 view for trying to access non-existent rooms
