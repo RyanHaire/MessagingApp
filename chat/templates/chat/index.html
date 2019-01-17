@@ -1,0 +1,15 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Lobby{% endblock %}
+
+{% block content %}
+    <h1>Welcome to the chat room list, {{user.username}}.</h1>
+    <h2>Pick a room to join:</h2>
+    {% comment %} {% for room in room_list %}
+        <li>
+            <a href="{% url room.name %}">{{ room.name }}</a>
+            <span> | Users: {{ room.users.count }} </span>
+        </li>
+    {% endfor %} {% endcomment %}
+{% endblock %}

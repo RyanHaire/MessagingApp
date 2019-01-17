@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}App{% endblock %}</title>
+    </head>
+    <body>
+        <main>
+            {% block content %}
+            <p>
+                <a href="{% url 'logout' %}">Logout</a>
+            </p>
+            {% endblock %}
+        </main>
+    </body>
+</html>

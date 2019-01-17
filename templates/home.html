@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <h2>Hi {{user.username}}<h2>
+    <p>
+        <a href="{% url 'chat:index' %}">Go to chat room list</a>
+    </p>
+{% else %}
+    <p>You are not logged in.</p>
+    <a href="{% url 'login' %}">Login</a>
+{% endif %}
+{% endblock %}

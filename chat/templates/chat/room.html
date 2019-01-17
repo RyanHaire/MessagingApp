@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Chat Room{% endblock %}
+
+{% block content %}
+    <h1 id="room-name"></h1>
+    <textarea id="chat-log" cols="100" rows="20" style="resize: none;"></textarea><br/>
+    <input id="message-input" type="text" size="100" placeholder="Enter message here..."><br/>
+    <input id="message-submit" type="button" value="Send">
+{% endblock %}
+
+<script type='text/javascript'>
+    var roomName = {{ room_name_json }};
+
+    changeNodeText("room-name", roomName);
+
+    function changeNodeText(nodeId, text) {
+        document.getElementById(nodeId).innerText = text.trim();
+    } 
+
+    // websocket listeners
+
+    // events listeners for message-input and message-submit
+</script>
